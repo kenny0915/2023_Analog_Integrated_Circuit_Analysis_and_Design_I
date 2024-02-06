@@ -1,0 +1,215 @@
+Using: /usr/cadtool/cad/synopsys/hspice/2020.12-sp2/hspice/linux64/hspice hw3_c.sp
+ ****** PrimeSim HSPICE -- R-2020.12-SP2 linux64 (May 24 2021 7074677) ******
+  Copyright (c) 1986 - 2023 by Synopsys, Inc. All Rights Reserved.
+  This software and the associated documentation are proprietary
+  to Synopsys, Inc. This software may only be used in accordance
+  with the terms and conditions of a written license agreement with
+  Synopsys, Inc. All other use, reproduction, or distribution of
+  this software is strictly prohibited.
+  Input File: hw3_c.sp                                                          
+  Command line options: /usr/cadtool/cad/synopsys/hspice/2020.12-sp2/hspice/linux64/hspice hw3_c.sp
+  Start time: Tue Nov 14 02:26:27 2023
+ lic:  
+ lic: FLEXlm: SDK_12.9.5 
+ lic: USER:   u110061217           HOSTNAME: ws24 
+ lic: HOSTID: "507c6f09f6b9"       PID:      14973 
+ lic: Using FLEXlm license file: 
+ lic: 26585@lstn 
+ lic: Checkout 1 hspice 
+ lic: License/Maintenance for hspice will expire on 31-mar-2024/2023.03 
+ lic: 266(in_use)/450(total) FLOATING license(s) on SERVER 26585@lstn 
+ lic:   
+ 
+
+  
+      
+ *****************************************************************
+ ******  option summary
+ ******
+ runlvl  = 3         bypass  = 2.0000    
+ **info** dc convergence successful at Newton-Raphson method 
+1****** PrimeSim HSPICE -- R-2020.12-SP2 linux64 (May 24 2021 7074677) ******
+ ******  
+ ** 110061217 王彥智 hw3_c
+
+ ****** operating point information tnom=  25.000 temp=  25.000 ******
+ ****** operating point status is all       simulation time is     0.     
+    node    =voltage      node    =voltage      node    =voltage
+
+ +0:vb1     = 900.0000m 0:vb2     =   1.0120  0:vdd     =   1.8000 
+ +0:vin     = 533.0000m 0:vout    = 799.9460m 0:vx      = 500.6350m
+
+
+ maximum nodal capacitance=   9.670E-14         on node     0:vx              
+
+    nodal  capacitance table 
+
+    node    =    cap      node    =    cap      node    =    cap
+
+ +0:vb1     =  57.5295f 0:vb2     =  85.5747f 0:vdd     =  89.1242f
+ +0:vin     =  59.9547f 0:vout    =  19.6828f 0:vx      =  96.7049f
+
+ 
+
+ **** voltage sources
+
+ subckt                                              
+ element  0:vin      0:vb1      0:vb2      0:vdd     
+  volts    533.0000m  900.0000m    1.0120     1.8000 
+  current    0.         0.         0.       -15.1122u
+  power      0.         0.         0.        27.2020u
+
+     total voltage source power dissipation=   27.2020u       watts
+
+
+
+ **** current sources
+
+ subckt             
+ element  0:i       
+  volts    500.6350m
+  current   10.0000u
+  power     -5.0063u
+
+
+     total current source power dissipation=  -5.0063u       watts
+
+ **** resistors
+
+ subckt             
+ element  0:rd      
+  r value  100.0000k
+  v drop     1.0001 
+  current   10.0005u
+  power     10.0011u
+
+
+
+ **** mosfets
+
+
+ subckt                                   
+ element  0:mpa      0:mna      0:mnb     
+ model    0:p_18.1   0:n_18.1   0:n_18.1  
+ region   Saturation Saturation Saturation
+  id        -5.1117u    5.1122u   10.0005u
+  ibs      6.208e-22 -1.008e-21 -566.0195a
+  ibd      227.6066a -142.3596a -904.4174a
+  vgs     -900.0000m  533.0000m  511.3650m
+  vds       -1.2994   500.6350m  299.3110m
+  vbs        0.         0.      -500.6350m
+  vth     -476.2435m  340.8711m  479.9316m
+  vdsat   -368.6683m  173.2311m   81.1760m
+  vod     -423.7565m  192.1289m   31.4334m
+  beta      64.6455u  302.0018u    4.7083m
+  gam eff  557.0846m  507.4460m  519.9148m
+  gm        21.8543u   47.1156u  194.5085u
+  gds       52.6053n  392.0336n    2.9274u
+  gmb        7.1251u    9.2327u   30.8648u
+  cdtot      3.2645f    4.3746f   19.6828f
+  cgtot     57.5295f   59.9547f   85.5747f
+  cstot     65.6636f   63.1053f   89.0657f
+  cbtot     23.4606f   21.7766f   48.1752f
+  cgs       52.6225f   54.1458f   70.1970f
+  cgd        1.0851f    1.0548f    5.3478f
+
+
+
+
+
+
+
+ ****     small-signal transfer characteristics
+
+      v(vout)/vin                              =   -4.6995 
+      input resistance at             vin      =  1.000e+20
+      output resistance at v(vout)             =   99.9431k
+
+
+
+ ***************************************************
+   ******   pole/zero analysis  
+  
+  
+    input =  0:vin          output = v(vout)
+  
+       poles (rad/sec)                 poles ( hertz)
+ real            imag            real            imag            
+ -488.343x       0.              -77.7222x       0.              
+ -2.46198g       0.              -391.837x       0.              
+  
+       zeros (rad/sec)                 zeros ( hertz)
+ real            imag            real            imag            
+ 33.2042g        0.              5.28462g        0.              
+ 597.299g        0.              95.0631g        0.              
+  
+  ***** constant factor = 284.892u
+ ******
+ ** 110061217 王彥智 hw3_c
+
+ ****** ac analysis tnom=  25.000 temp=  25.000 ******
+ dcgain_in_db=  13.4411     at=   1.5849 
+             from=   1.0000     to= 100.0000g
+ bw=  74.7237x
+ ugb= 286.3280x
+
+          ***** job concluded
+ ******  
+ ** 110061217 王彥智 hw3_c
+
+ ****** job statistics summary tnom=  25.000 temp=  25.000 ******
+  
+ ******  Machine Information  ******
+ CPU:
+ model name	: Intel(R) Xeon(R) Gold 6326 CPU @ 2.90GHz
+ cpu MHz	: 800.225
+ CPU(s)		: 64
+  
+ OS:
+ Linux version 3.10.0-1160.95.1.el7.x86_64 (mockbuild@kbuilder.bsys.centos.org) (gcc version 4.8.5 20150623 (Red Hat 4.8.5-44) (GCC) ) #1 SMP Mon Jul 24 13:59:37 UTC 2023
+
+ System loadavg : 0.30 0.37 0.50 2/1769 14977
+
+
+  ******  PrimeSim HSPICE Threads Information  ******
+
+  Command Line Threads Count :     1
+  Available CPU Count        :    64
+  Actual Threads Count       :     1
+
+
+  ******  Circuit Statistics  ******
+  # nodes       =      13 # elements   =       9
+  # resistors   =       1 # capacitors =       0 # inductors   =       0
+  # mutual_inds =       0 # vccs       =       0 # vcvs        =       0
+  # cccs        =       0 # ccvs       =       0 # volt_srcs   =       4
+  # curr_srcs   =       1 # diodes     =       0 # bjts        =       0
+  # jfets       =       0 # mosfets    =       3 # U elements  =       0
+  # T elements  =       0 # W elements =       0 # B elements  =       0
+  # S elements  =       0 # P elements =       0 # va device   =       0
+  # vector_srcs =       0 # N elements =       0
+
+
+  ******  Runtime Statistics (seconds)  ******
+
+  analysis           time    # points   tot. iter  conv.iter
+  op point           0.01           1          18
+  ac analysis        0.00         111         111
+  readin             0.02
+  errchk             0.00
+  setup              0.00
+  output             0.00
+
+
+           peak memory used        470.98 megabytes
+           total cpu time            0.04 seconds
+           total elapsed time        0.67 seconds
+           job started at     02:26:27 11/14/2023
+           job ended   at     02:26:27 11/14/2023
+
+>info:         ***** hspice job concluded
+           job total runtime         0.67 seconds
+
+
+ lic: Release hspice token(s) 
+ lic: total license checkout elapse time:        0.63(s)
